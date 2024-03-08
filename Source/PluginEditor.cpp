@@ -19,8 +19,8 @@ BitCrusherAudioProcessorEditor::BitCrusherAudioProcessorEditor (BitCrusherAudioP
 
     crushSlider.setSliderStyle(juce::Slider::SliderStyle::LinearHorizontal);
     crushSlider.setTextBoxStyle(juce::Slider::TextBoxBelow, true, 100, 25);
-    crushSlider.setRange(0.0, 10.0);
-    crushSlider.setValue(0.0);
+    crushSlider.setRange(2, 16, 1);
+    crushSlider.setValue(16);
     crushSlider.addListener(this);
 
     addAndMakeVisible(crushSlider);
@@ -47,6 +47,7 @@ void BitCrusherAudioProcessorEditor::resized()
 void BitCrusherAudioProcessorEditor::sliderValueChanged(juce::Slider* slider)
 {
     if (slider == &crushSlider) {
-        audioProcessor.crushAmt = crushSlider.getValue();
+        audioProcessor.crushAmt = 2.0 / 
+            (pow(2.0, crushSlider.getValue() - 1.0));
     }
 }

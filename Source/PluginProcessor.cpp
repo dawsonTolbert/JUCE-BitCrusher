@@ -156,13 +156,13 @@ void BitCrusherAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, j
 
         // ..do something to the data...
         for (int sample = 0; sample < buffer.getNumSamples(); ++sample) {
-            //BitCrushing by multiplying the sample, rounding it, 
+            //Bit Reduction done by multiplying the sample, rounding it, 
             //and then dividing it by the same num
-            if (crushAmt > 0.0) {
-                channelData[sample] = buffer.getSample(channel, sample) * crushAmt;
-                channelData[sample] = (int)channelData[sample];
-                channelData[sample] = channelData[sample] / crushAmt;
-            }
+            //channelData[sample] = buffer.getSample(channel, sample) * crushAmt;
+            //channelData[sample] = (int)channelData[sample];
+            //channelData[sample] = channelData[sample] / crushAmt;
+            channelData[sample] = crushAmt * 
+                ((int)(channelData[sample] / crushAmt));
         }
     }
 }
