@@ -14,7 +14,8 @@
 //==============================================================================
 /**
 */
-class BitCrusherAudioProcessorEditor  : public juce::AudioProcessorEditor
+class BitCrusherAudioProcessorEditor  : public juce::AudioProcessorEditor,
+    public juce::Slider::Listener
 {
 public:
     BitCrusherAudioProcessorEditor (BitCrusherAudioProcessor&);
@@ -23,6 +24,7 @@ public:
     //==============================================================================
     void paint (juce::Graphics&) override;
     void resized() override;
+    void sliderValueChanged(juce::Slider* slider) override;
 
 private:
     // This reference is provided as a quick way for your editor to

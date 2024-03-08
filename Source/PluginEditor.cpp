@@ -21,7 +21,7 @@ BitCrusherAudioProcessorEditor::BitCrusherAudioProcessorEditor (BitCrusherAudioP
     crushSlider.setTextBoxStyle(juce::Slider::TextBoxBelow, true, 100, 25);
     crushSlider.setRange(0.0, 10.0);
     crushSlider.setValue(0.0);
-    //crushSlider.addListener(this);
+    crushSlider.addListener(this);
 
     addAndMakeVisible(crushSlider);
 }
@@ -42,4 +42,11 @@ void BitCrusherAudioProcessorEditor::resized()
     // This is generally where you'll want to lay out the positions of any
     // subcomponents in your editor..
     crushSlider.setBounds(getLocalBounds());
+}
+
+void BitCrusherAudioProcessorEditor::sliderValueChanged(juce::Slider* slider)
+{
+    if (slider == &crushSlider) {
+        audioProcessor.crushAmt = crushSlider.getValue();
+    }
 }
