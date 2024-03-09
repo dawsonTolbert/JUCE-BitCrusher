@@ -25,7 +25,7 @@ BitCrusherAudioProcessorEditor::BitCrusherAudioProcessorEditor (BitCrusherAudioP
 
     rateSlider.setSliderStyle(juce::Slider::SliderStyle::LinearHorizontal);
     rateSlider.setTextBoxStyle(juce::Slider::TextBoxBelow, true, 100, 25);
-    rateSlider.setRange(1, 20, 0.1);
+    rateSlider.setRange(1, 50, 0.1);
     rateSlider.setValue(1);
     rateSlider.addListener(this);
 
