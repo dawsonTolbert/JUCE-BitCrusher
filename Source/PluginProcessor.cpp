@@ -163,6 +163,12 @@ void BitCrusherAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, j
             //channelData[sample] = channelData[sample] / crushAmt;
             channelData[sample] = crushAmt * 
                 ((int)(channelData[sample] / crushAmt));
+
+            if (rateDivide > 1) {
+                if (sample % (int)rateDivide != 0) {
+                    channelData[sample] = channelData[sample - sample % (int)rateDivide];
+                }
+            }
         }
     }
 }

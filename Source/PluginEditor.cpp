@@ -57,7 +57,6 @@ void BitCrusherAudioProcessorEditor::resized()
     bounds.removeFromTop(25 + bounds.getHeight() / 2);
     auto rateSliderArea = bounds;
     rateSliderArea.setHeight(bounds.getHeight() / 2);
-
     rateSlider.setBounds(rateSliderArea);
 }
 
@@ -66,5 +65,8 @@ void BitCrusherAudioProcessorEditor::sliderValueChanged(juce::Slider* slider)
     if (slider == &crushSlider) {
         audioProcessor.crushAmt = 2.0 / 
             (pow(2.0, crushSlider.getValue() - 1.0));
+    }
+    if (slider == &rateSlider) {
+        audioProcessor.rateDivide = rateSlider.getValue();
     }
 }
