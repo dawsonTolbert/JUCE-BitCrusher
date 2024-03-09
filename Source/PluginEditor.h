@@ -32,6 +32,7 @@ private:
     BitCrusherAudioProcessor& audioProcessor;
 
     juce::Slider crushSlider;
+    juce::Slider rateSlider;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (BitCrusherAudioProcessorEditor)
 };
